@@ -23,6 +23,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.1.6.Final'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
 
     testAnnotationProcessor 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'

@@ -26,20 +26,19 @@ import static org.junit.Assert.*;
 @SpringBootTest(classes = TestWeMakePriceConfiguration.class)
 public class WebCrawlingServiceImplTest {
 
-
     @Autowired
     private WebCrawlingService webCrawlingService;
 
     @Test
     public void 웹크롤링_서비스가_정상적으로_호출된다() {
         //Given
-        WebCrawlingRequest request = WebCrawlingRequest.ofMock("https://www.naver.com/", ParsingTypes.TEXT_ALL, 3);
+        WebCrawlingRequest request = WebCrawlingRequest.ofMock("https://www.naver.com/", ParsingTypes.WITHOUT_TAG, 3);
 
         //When
         WebCrawlingResponse response = webCrawlingService.crawling(request);
 
         //Then
         assertSame("몫은 ", response.getQuotient(), "몫");
-        assertSame("나머지는", response.getRemainder(), "나머");
+        assertSame("나머지는", response.getRemainder(), "나머지");
     }
 }
