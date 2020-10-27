@@ -1,5 +1,7 @@
 package com.homework.wemakeprice.service.impl;
 
+import com.homework.wemakeprice.dto.WebCrawlingRequest;
+import com.homework.wemakeprice.dto.WebCrawlingResponse;
 import com.homework.wemakeprice.service.WebCrawlingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,8 +12,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class WebCrawlingServiceImpl implements WebCrawlingService {
+
     @Override
-    public void crawling() {
-        log.info("service");
+    public WebCrawlingResponse crawling(WebCrawlingRequest request) {
+        return WebCrawlingResponse.of("몫","나머지");
     }
 }
