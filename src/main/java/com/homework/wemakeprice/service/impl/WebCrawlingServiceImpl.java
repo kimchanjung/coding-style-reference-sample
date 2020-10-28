@@ -31,4 +31,5 @@ public class WebCrawlingServiceImpl implements WebCrawlingService {
         String parse = jsoupService.parse(request.getUrl(), request.getParsingTypes());
         return WebCrawlingResponse.of("몫","나머지");
     }
+
 }

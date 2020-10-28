@@ -30,6 +30,7 @@ public class WebCrawlingController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public WebCrawlingResponse crawling(@Valid @RequestBody WebCrawlingRequest request) {
+        log.info("request = "+request);
         return webCrawlingService.crawling(request);
     }
 }

@@ -41,4 +41,9 @@ public class WebCrawlingServiceImplTest {
         assertSame("몫은 ", response.getQuotient(), "몫");
         assertSame("나머지는", response.getRemainder(), "나머지");
     }
+
+    @Test
+    public void test() {
+
+    }
 }

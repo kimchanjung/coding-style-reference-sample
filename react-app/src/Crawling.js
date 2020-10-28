@@ -3,29 +3,27 @@ import axios from 'axios';
 
 export default function Crawling() {
     const [url, setUrl] = useState("");
-    const [parsingType, setParsingType] = useState("WITHOUT_TAG");
+    const [parsingTypes, setParsingTypes] = useState("WITHOUT_TAG");
     const [bundleUnit, setBundleUnit] = useState(0);
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        alert(`URL: ${url} -  ${parsingType} -  ${bundleUnit}`);
+        alert(`URL: ${url} -  ${parsingTypes} -  ${bundleUnit}`);
 
 
         axios.post('/api/v1/crawling', {
             url: url,
-            parsingType: parsingType,
-            bundleUnit:bundleUnit
-          })
-          .then(function (response) {
+            parsingTypes: parsingTypes,
+            bundleUnit: bundleUnit
+        })
+        .then(function (response) {
             console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        })
+        .catch(function (error) {
+            console.log(error.response);
+        });
+        
     }
-
-
-
 
     return (
         <div>
@@ -33,7 +31,7 @@ export default function Crawling() {
                 <div>
                     <p>URL &nbsp;<input name="url" id="url" type="text" onChange={({ target: { value } }) => setUrl(value)}/></p>
                     <p>TYPE &nbsp;
-                        <select name="parsingType" id="parsingType" onChange={({ target: { value } }) => setParsingType(value)}>
+                        <select name="parsingTypes" id="parsingTypes" onChange={({ target: { value } }) => setParsingTypes(value)}>
                             <option value="WITHOUT_TAG">HTML TAG 제외 </option>
                             <option value="TEXT_ALL">텍스트전체</option>
                         </select>

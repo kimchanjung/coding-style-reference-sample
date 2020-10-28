@@ -21,6 +21,7 @@ public class JsoupServiceImpl implements JsoupService {
     @Override
     public String parse(String url, ParsingTypes parsingTypes) {
         try {
+            log.info("parsingTypes"+parsingTypes);
             Document parse = Jsoup.connect(url).timeout(3000).execute().parse();
             log.info("html = " +parsingTypes.getText(parse));
             return parsingTypes.getText(parse);
