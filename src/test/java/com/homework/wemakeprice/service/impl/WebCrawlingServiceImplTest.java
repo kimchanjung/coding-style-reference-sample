@@ -38,12 +38,7 @@ public class WebCrawlingServiceImplTest {
         WebCrawlingResponse response = webCrawlingService.crawling(request);
 
         //Then
-        assertSame("몫은 ", response.getQuotient(), "몫");
-        assertSame("나머지는", response.getRemainder(), "나머지");
-    }
-
-    @Test
-    public void test() {
-
+        assertNotEquals("몫은 존재한다", response.getQuotient());
+        assertNotEquals("나머지는 존재한", response.getRemainder());
     }
 }

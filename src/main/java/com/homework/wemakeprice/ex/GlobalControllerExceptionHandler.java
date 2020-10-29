@@ -14,6 +14,9 @@ import java.util.stream.Collectors;
 
 /**
  * Created by kimchanjung on 2020-10-27 오후 2:01
+ * Hibernate validation의 처리에서 오류 메시지를
+ * api응답에 code, message 두 프로퍼티에 담아 리턴 하도록
+ * 처리함
  */
 
 @Slf4j

@@ -4,13 +4,14 @@ import com.homework.wemakeprice.enums.ParsingTypes;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
  * Created by kimchanjung on 2020-10-27 오후 4:50
+ * 프론트 페이지의 조건을 받아오는 DTO
  */
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -21,7 +22,8 @@ public class WebCrawlingRequest {
     @NotNull(message = "파싱타입을 선택해주세요")
     private ParsingTypes parsingTypes;
 
-    @NotNull(message = "출력묶음단위를 입력해주세요")
+    @NotNull(message = "묶음 단위를 입력하세요")
+    @Min(value = 2, message = "2 이상 입력 해주세요")
     private Integer bundleUnit;
 
     public static WebCrawlingRequest ofMock(String url, ParsingTypes parsingTypes, Integer bundleUnit) {
