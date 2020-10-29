@@ -1,6 +1,7 @@
 package com.homework.wemakeprice.service.impl;
 
 import com.homework.wemakeprice.TestWeMakePriceConfiguration;
+import com.homework.wemakeprice.dto.WebContentDto;
 import com.homework.wemakeprice.enums.ParsingTypes;
 import com.homework.wemakeprice.ex.HttpBadRequestException;
 import com.homework.wemakeprice.service.JsoupService;
@@ -29,30 +30,26 @@ public class JsoupServiceImplTest {
     @Test
     public void 파싱문자열에_HTML_TAG가_포함된다() {
         //Given & When
-        String parse = jsoupService.parse("http://www.naver.com", ParsingTypes.TEXT_ALL);
-        log.info("ddd - "+parse.indexOf("<html"));
+        WebContentDto contentDto = jsoupService.parse("http://www.naver.com", ParsingTypes.TEXT_ALL);
+
+        System.out.println(contentDto.getContent());
         //Then
-        assertNotEquals( -1, parse.indexOf("<html"),"html 태그의 index는");
+        assertNotEquals( -1, contentDto.getContent().indexOf("<html"),"html 태그의 index는");
     }
 
     @Test
     public void 파싱문자열에_HTML_TAG가_제거된다() {
         //Given & When
-        String parse = jsoupService.parse("http://www.naver.com", ParsingTypes.WITHOUT_TAG);
+        WebContentDto contentDto = jsoupService.parse("http://www.naver.com", ParsingTypes.WITHOUT_TAG);
+
         //Then
-        assertEquals( -1, parse.indexOf("<html"),"html 태그의 index는");
+        assertEquals( -1, contentDto.getContent().indexOf("<html"),"html 태그의 index는");
     }
 
     @Test(expected = HttpBadRequestException.class)
     public void URL_올바르지않으면_예외를_발생한다() {
         //Given & When & Then
         jsoupService.parse("http://localhost:1000", ParsingTypes.WITHOUT_TAG);
-    }
-
-    @Test(expected = HttpBadRequestException.class)
-    public void HTTP_상태코드가_200아니면_예외를_발생한다() {
-        //Given & When & Then
-        jsoupService.parse("http://www.naver.com/2132131231231231", ParsingTypes.WITHOUT_TAG);
     }
 
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
  */
 
 public class HttpBadRequestException extends RuntimeException {
+
     public HttpBadRequestException(String msg) {
         super(msg);
     }

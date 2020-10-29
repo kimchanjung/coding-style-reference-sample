@@ -19,16 +19,15 @@ public class WebContentDto {
 
     public static WebContentDto of(String content) {
         WebContentDto instance = new WebContentDto();
-        instance.content = parse(content);
+        instance.content = content;
         return instance;
     }
 
     /**
      * 크롤힝한 내용을 조건에 맞게 숫자와 알파벳만 남기고 정렬까지 처리한다.
-     * @param content
      * @return
      */
-    private static String parse(String content) {
+    public String parse() {
         StringBuilder numeric = new StringBuilder();
         return rejoin(content.chars()
                 .mapToObj(v -> String.valueOf((char) v))

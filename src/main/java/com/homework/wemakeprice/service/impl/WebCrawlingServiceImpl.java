@@ -28,7 +28,7 @@ public class WebCrawlingServiceImpl implements WebCrawlingService {
     @Override
     public WebCrawlingResponse crawling(WebCrawlingRequest request) {
         return WebCrawlingResponse.of(jsoupService.parse(request.getUrl(),
-                request.getParsingTypes()).getContent(),
+                request.getParsingTypes()).parse(),
                 request.getBundleUnit());
     }
 

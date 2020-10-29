@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class WebCrawlingRequest {
+
     @NotBlank(message = "URL을 입력해주세요")
     private String url;
 

@@ -15,6 +15,6 @@ public class WebContentDtoTest {
         WebContentDto dto = WebContentDto.of("김@#BC1d2AaE1f1Fg40");
 
         // Then
-        assertEquals("A0a1B1C1d2E4Ffg",dto.getContent());
+        assertEquals("A0a1B1C1d2E4Ffg",dto.parse());
     }
 }
