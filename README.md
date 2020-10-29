@@ -4,10 +4,10 @@
 기본적으로 http://localhost:8080 으로 서비스가 실행됩니다.
 
 # 버전정보
-- Java v1.8
-- Spring Boot v2.3.4
-- Jsoup v1.13.1 (크롤링 라이브러리)
-- React v17.0.1
+- Java - v1.8
+- Spring Boot - v2.3.4
+- Jsoup - v1.13.1 (크롤링 라이브러리)
+- React - v17.0.1
 
 
 # 파일 정보
