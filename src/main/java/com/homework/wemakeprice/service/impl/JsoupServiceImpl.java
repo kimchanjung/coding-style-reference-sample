@@ -17,7 +17,7 @@ import java.io.IOException;
  * 결합도를 느슨하게 유지
  * (추후 테스트 수행시 Mock 객체사용을 용이하도록 하기위하여)
  */
-@Slf4j
+
 @Service
 public class JsoupServiceImpl implements JsoupService {
 

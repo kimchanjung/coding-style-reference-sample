@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
  * 크롤링 라이브러리를 호출하고 응답 DTO를 리턴하는 로직만 수행함
  * 실제 조건에 맞게 파싱은 WebContentDto가 담당함
  */
-@Slf4j
 @Service
 public class WebCrawlingServiceImpl implements WebCrawlingService {
 

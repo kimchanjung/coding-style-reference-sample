@@ -16,7 +16,6 @@ import javax.validation.Valid;
  * Created by kimchanjung on 2020-10-27 오후 2:05
  */
 
-@Slf4j
 @RestController
 @RequestMapping("/api/v1/crawling")
 public class WebCrawlingController {
@@ -30,7 +29,6 @@ public class WebCrawlingController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public WebCrawlingResponse crawling(@Valid @RequestBody WebCrawlingRequest request) {
-        log.info("request = "+request);
         return webCrawlingService.crawling(request);
     }
 }
