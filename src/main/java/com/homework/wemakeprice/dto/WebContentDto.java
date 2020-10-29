@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 /**
  * Created by kimchanjung on 2020-10-28 오후 1:17
  * 크롤링한 내용을 파싱하기위한 객체
- *
  */
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class WebContentDto {
+
     private String content;
 
     public static WebContentDto of(String content) {
@@ -25,7 +25,6 @@ public class WebContentDto {
 
     /**
      * 크롤힝한 내용을 조건에 맞게 숫자와 알파벳만 남기고 정렬까지 처리한다.
-     * @return
      */
     public String parse() {
         StringBuilder numeric = new StringBuilder();
@@ -42,20 +41,15 @@ public class WebContentDto {
      * 숫자와 알파벳만 남기도록 필터링
      * 추후 숫자와 알파벳을 분리하기 위하여 숫자의 마지막 인덱스를
      * 찾기위한 시간복잡도를 줄이기 위해 필터링과 동시에 숫자를 따로 저장해둠
-     * @param v
-     * @param numeric
-     * @return
      */
     private static boolean validChar(String v, StringBuilder numeric) {
         if (Character.isDigit(v.charAt(0))) numeric.append(v);
-        return Character.getType(v.charAt(0)) == 2 || Character.getType(v.charAt(0)) == 1;
+        int type = Character.getType(v.charAt(0));
+        return type == 2 || type == 1;
     }
 
     /**
      * 알파벳 사이에 숫자를 삽입하고 제조합
-     * @param alphabets
-     * @param numeric
-     * @return
      */
     private static String rejoin(String alphabets, StringBuilder numeric) {
         StringBuilder rejoin = new StringBuilder();
