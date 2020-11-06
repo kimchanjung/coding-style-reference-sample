@@ -1,12 +1,12 @@
-package com.homework.wemakeprice.service.impl;
+package com.codingStyle.practice.service.impl;
 
 
 
-import com.homework.wemakeprice.TestWeMakePriceConfiguration;
-import com.homework.wemakeprice.dto.WebCrawlingRequest;
-import com.homework.wemakeprice.dto.WebCrawlingResponse;
-import com.homework.wemakeprice.enums.ParsingTypes;
-import com.homework.wemakeprice.service.WebCrawlingService;
+import com.codingStyle.practice.TestWeMakePriceConfiguration;
+import com.codingStyle.practice.dto.WebCrawlingRequest;
+import com.codingStyle.practice.dto.WebCrawlingResponse;
+import com.codingStyle.practice.enums.ParsingTypes;
+import com.codingStyle.practice.service.WebCrawlingService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

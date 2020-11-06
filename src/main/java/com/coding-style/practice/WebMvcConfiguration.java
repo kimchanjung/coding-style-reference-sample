@@ -1,4 +1,4 @@
-package com.homework.wemakeprice;
+package com.codingStyle.practice;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Configurable;

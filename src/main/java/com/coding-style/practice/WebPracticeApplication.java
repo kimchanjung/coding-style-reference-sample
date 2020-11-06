@@ -1,13 +1,13 @@
-package com.homework.wemakeprice;
+package com.codingStyle.practice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WeMakePriceApplication {
+public class WebPracticeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WeMakePriceApplication.class, args);
+        SpringApplication.run(WebPracticeApplication.class, args);
     }
 
 }

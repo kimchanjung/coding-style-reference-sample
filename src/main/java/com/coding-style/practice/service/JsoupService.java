@@ -1,7 +1,7 @@
-package com.homework.wemakeprice.service;
+package com.codingStyle.practice.service;
 
-import com.homework.wemakeprice.dto.WebContentDto;
-import com.homework.wemakeprice.enums.ParsingTypes;
+import com.codingStyle.practice.enums.ParsingTypes;
+import com.codingStyle.practice.dto.WebContentDto;
 
 /**
  * Created by kimchanjung on 2020-10-27 오후 6:01

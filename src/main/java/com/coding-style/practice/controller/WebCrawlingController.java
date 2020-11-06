@@ -1,9 +1,8 @@
-package com.homework.wemakeprice.controller;
+package com.codingStyle.practice.controller;
 
-import com.homework.wemakeprice.dto.WebCrawlingRequest;
-import com.homework.wemakeprice.dto.WebCrawlingResponse;
-import com.homework.wemakeprice.service.WebCrawlingService;
-import lombok.extern.slf4j.Slf4j;
+import com.codingStyle.practice.dto.WebCrawlingRequest;
+import com.codingStyle.practice.dto.WebCrawlingResponse;
+import com.codingStyle.practice.service.WebCrawlingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

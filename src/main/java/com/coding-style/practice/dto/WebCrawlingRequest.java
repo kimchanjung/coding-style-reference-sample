@@ -1,6 +1,6 @@
-package com.homework.wemakeprice.dto;
+package com.codingStyle.practice.dto;
 
-import com.homework.wemakeprice.enums.ParsingTypes;
+import com.codingStyle.practice.enums.ParsingTypes;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.homework.wemakeprice.enums;
+package com.codingStyle.practice.enums;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

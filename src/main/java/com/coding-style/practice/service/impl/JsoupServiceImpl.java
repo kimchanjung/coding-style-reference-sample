@@ -1,10 +1,9 @@
-package com.homework.wemakeprice.service.impl;
+package com.codingStyle.practice.service.impl;
 
-import com.homework.wemakeprice.dto.WebContentDto;
-import com.homework.wemakeprice.enums.ParsingTypes;
-import com.homework.wemakeprice.ex.HttpBadRequestException;
-import com.homework.wemakeprice.service.JsoupService;
-import lombok.extern.slf4j.Slf4j;
+import com.codingStyle.practice.dto.WebContentDto;
+import com.codingStyle.practice.enums.ParsingTypes;
+import com.codingStyle.practice.ex.HttpBadRequestException;
+import com.codingStyle.practice.service.JsoupService;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.springframework.stereotype.Service;

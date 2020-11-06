@@ -1,4 +1,4 @@
-package com.homework.wemakeprice;
+package com.codingStyle.practice;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

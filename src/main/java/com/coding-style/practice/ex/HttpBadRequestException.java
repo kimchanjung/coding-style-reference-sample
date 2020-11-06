@@ -1,4 +1,4 @@
-package com.homework.wemakeprice.ex;
+package com.codingStyle.practice.ex;
 
 import org.jsoup.HttpStatusException;
 

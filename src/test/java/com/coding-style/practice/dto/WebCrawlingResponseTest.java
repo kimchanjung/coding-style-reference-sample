@@ -1,4 +1,4 @@
-package com.homework.wemakeprice.dto;
+package com.codingStyle.practice.dto;
 
 import org.junit.Test;
 

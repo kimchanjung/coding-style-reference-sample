@@ -1,8 +1,6 @@
-package com.homework.wemakeprice.dto;
+package com.codingStyle.practice.dto;
 
 import org.junit.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by kimchanjung on 2020-10-28 오후 9:10

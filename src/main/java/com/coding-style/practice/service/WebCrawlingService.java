@@ -1,7 +1,7 @@
-package com.homework.wemakeprice.service;
+package com.codingStyle.practice.service;
 
-import com.homework.wemakeprice.dto.WebCrawlingRequest;
-import com.homework.wemakeprice.dto.WebCrawlingResponse;
+import com.codingStyle.practice.dto.WebCrawlingRequest;
+import com.codingStyle.practice.dto.WebCrawlingResponse;
 
 /**
  * Created by kimchanjung on 2020-10-27 오후 2:41

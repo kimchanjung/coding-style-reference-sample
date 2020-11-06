@@ -1,10 +1,9 @@
-package com.homework.wemakeprice.service.impl;
+package com.codingStyle.practice.service.impl;
 
-import com.homework.wemakeprice.dto.WebCrawlingRequest;
-import com.homework.wemakeprice.dto.WebCrawlingResponse;
-import com.homework.wemakeprice.service.JsoupService;
-import com.homework.wemakeprice.service.WebCrawlingService;
-import lombok.extern.slf4j.Slf4j;
+import com.codingStyle.practice.dto.WebCrawlingRequest;
+import com.codingStyle.practice.dto.WebCrawlingResponse;
+import com.codingStyle.practice.service.JsoupService;
+import com.codingStyle.practice.service.WebCrawlingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

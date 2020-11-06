@@ -1,4 +1,4 @@
-package com.homework.wemakeprice.ex;
+package com.codingStyle.practice.ex;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
