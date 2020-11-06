@@ -1,8 +1,8 @@
-package com.codingStyle.practice.controller;
+package com.codingstyle.practice.controller;
 
-import com.codingStyle.practice.dto.WebCrawlingRequest;
-import com.codingStyle.practice.dto.WebCrawlingResponse;
-import com.codingStyle.practice.service.WebCrawlingService;
+import com.codingstyle.practice.dto.WebCrawlingRequest;
+import com.codingstyle.practice.dto.WebCrawlingResponse;
+import com.codingstyle.practice.service.WebCrawlingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

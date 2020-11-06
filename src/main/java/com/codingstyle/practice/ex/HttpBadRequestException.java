@@ -1,4 +1,4 @@
-package com.codingStyle.practice.ex;
+package com.codingstyle.practice.ex;
 
 import org.jsoup.HttpStatusException;
 

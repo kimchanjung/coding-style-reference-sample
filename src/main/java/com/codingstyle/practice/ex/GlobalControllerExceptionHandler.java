@@ -1,4 +1,4 @@
-package com.codingStyle.practice.ex;
+package com.codingstyle.practice.ex;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

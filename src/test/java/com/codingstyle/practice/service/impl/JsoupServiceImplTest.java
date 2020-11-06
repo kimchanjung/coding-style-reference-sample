@@ -1,10 +1,10 @@
-package com.codingStyle.practice.service.impl;
+package com.codingstyle.practice.service.impl;
 
-import com.codingStyle.practice.TestWeMakePriceConfiguration;
-import com.codingStyle.practice.enums.ParsingTypes;
-import com.codingStyle.practice.ex.HttpBadRequestException;
-import com.codingStyle.practice.service.JsoupService;
-import com.codingStyle.practice.dto.WebContentDto;
+import com.codingstyle.practice.TestWebPracticeConfiguration;
+import com.codingstyle.practice.enums.ParsingTypes;
+import com.codingstyle.practice.ex.HttpBadRequestException;
+import com.codingstyle.practice.service.JsoupService;
+import com.codingstyle.practice.dto.WebContentDto;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestWeMakePriceConfiguration.class)
+@SpringBootTest(classes = TestWebPracticeConfiguration.class)
 public class JsoupServiceImplTest {
 
     @Autowired

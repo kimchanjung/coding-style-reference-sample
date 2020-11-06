@@ -1,7 +1,7 @@
-package com.codingStyle.practice.service;
+package com.codingstyle.practice.service;
 
-import com.codingStyle.practice.enums.ParsingTypes;
-import com.codingStyle.practice.dto.WebContentDto;
+import com.codingstyle.practice.enums.ParsingTypes;
+import com.codingstyle.practice.dto.WebContentDto;
 
 /**
  * Created by kimchanjung on 2020-10-27 오후 6:01

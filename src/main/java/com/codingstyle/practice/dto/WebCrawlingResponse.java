@@ -1,4 +1,4 @@
-package com.codingStyle.practice.dto;
+package com.codingstyle.practice.dto;
 
 import lombok.AccessLevel;
 import lombok.Getter;

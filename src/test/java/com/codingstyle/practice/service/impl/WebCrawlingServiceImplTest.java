@@ -1,12 +1,10 @@
-package com.codingStyle.practice.service.impl;
+package com.codingstyle.practice.service.impl;
 
-
-
-import com.codingStyle.practice.TestWeMakePriceConfiguration;
-import com.codingStyle.practice.dto.WebCrawlingRequest;
-import com.codingStyle.practice.dto.WebCrawlingResponse;
-import com.codingStyle.practice.enums.ParsingTypes;
-import com.codingStyle.practice.service.WebCrawlingService;
+import com.codingstyle.practice.TestWebPracticeConfiguration;
+import com.codingstyle.practice.dto.WebCrawlingRequest;
+import com.codingstyle.practice.dto.WebCrawlingResponse;
+import com.codingstyle.practice.enums.ParsingTypes;
+import com.codingstyle.practice.service.WebCrawlingService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by kimchanjung on 2020-10-27 오후 2:45
@@ -23,7 +20,7 @@ import static org.junit.Assert.*;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestWeMakePriceConfiguration.class)
+@SpringBootTest(classes = TestWebPracticeConfiguration.class)
 public class WebCrawlingServiceImplTest {
 
     @Autowired

@@ -1,9 +1,9 @@
-package com.codingStyle.practice.service.impl;
+package com.codingstyle.practice.service.impl;
 
-import com.codingStyle.practice.dto.WebCrawlingRequest;
-import com.codingStyle.practice.dto.WebCrawlingResponse;
-import com.codingStyle.practice.service.JsoupService;
-import com.codingStyle.practice.service.WebCrawlingService;
+import com.codingstyle.practice.dto.WebCrawlingRequest;
+import com.codingstyle.practice.dto.WebCrawlingResponse;
+import com.codingstyle.practice.service.JsoupService;
+import com.codingstyle.practice.service.WebCrawlingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
-package com.codingStyle.practice.service.impl;
+package com.codingstyle.practice.service.impl;
 
-import com.codingStyle.practice.dto.WebContentDto;
-import com.codingStyle.practice.enums.ParsingTypes;
-import com.codingStyle.practice.ex.HttpBadRequestException;
-import com.codingStyle.practice.service.JsoupService;
+import com.codingstyle.practice.dto.WebContentDto;
+import com.codingstyle.practice.enums.ParsingTypes;
+import com.codingstyle.practice.ex.HttpBadRequestException;
+import com.codingstyle.practice.service.JsoupService;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.springframework.stereotype.Service;

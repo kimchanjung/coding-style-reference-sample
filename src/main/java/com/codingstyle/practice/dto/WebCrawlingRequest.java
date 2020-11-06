@@ -1,6 +1,6 @@
-package com.codingStyle.practice.dto;
+package com.codingstyle.practice.dto;
 
-import com.codingStyle.practice.enums.ParsingTypes;
+import com.codingstyle.practice.enums.ParsingTypes;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

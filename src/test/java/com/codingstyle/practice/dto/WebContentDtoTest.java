@@ -1,6 +1,8 @@
-package com.codingStyle.practice.dto;
+package com.codingstyle.practice.dto;
 
 import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by kimchanjung on 2020-10-28 오후 9:10

@@ -1,4 +1,4 @@
-package com.codingStyle.practice.enums;
+package com.codingstyle.practice.enums;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
