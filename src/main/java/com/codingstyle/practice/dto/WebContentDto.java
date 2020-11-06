@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 /**
@@ -30,11 +31,18 @@ public class WebContentDto {
         StringBuilder numeric = new StringBuilder();
         return rejoin(content.chars()
                 .mapToObj(v -> String.valueOf((char) v))
-                .sorted((a, b) -> a.toUpperCase().equals(b.toUpperCase()) ?
-                        a.compareTo(b) :
-                        a.toUpperCase().compareTo(b.toUpperCase()))
+                .sorted(comparator())
                 .filter(v -> validChar(v, numeric))
                 .collect(Collectors.joining("")), numeric);
+    }
+
+    /**
+     * 텍스트를 정렬한다. 알파벳 대소문자를 구분하지 않고 알파벳 순서대로
+     * 정렬하기위하여 모두 대분자로 변경후 비교한다.
+     */
+    private Comparator<String> comparator() {
+        return (a, b) -> a.toUpperCase().equals(b.toUpperCase()) ?
+                a.compareTo(b) : a.toUpperCase().compareTo(b.toUpperCase());
     }
 
     /**
