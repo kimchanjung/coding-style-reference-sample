@@ -21,7 +21,7 @@
   
 # 실행방법
 
-인텔리제이 프로젝트를 import 후 WeMakePriceApplication 실행(run) 합니다.  
+인텔리제이 프로젝트를 import 후 WebPracticeApplication 실행(run) 합니다.  
 기본적으로 http://localhost:8080 으로 서비스가 실행됩니다.
 
 # 버전정보
