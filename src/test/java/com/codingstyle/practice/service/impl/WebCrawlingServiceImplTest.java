@@ -29,7 +29,7 @@ public class WebCrawlingServiceImplTest {
     @Test
     public void 웹크롤링_서비스가_정상적으로_호출된다() {
         //Given
-        WebCrawlingRequest request = WebCrawlingRequest.ofMock("https://www.naver.com/", ParsingTypes.WITHOUT_TAG, 3);
+        WebCrawlingRequest request = WebCrawlingRequest.of("https://www.naver.com/", ParsingTypes.WITHOUT_TAG, 3);
 
         //When
         WebCrawlingResponse response = webCrawlingService.crawling(request);

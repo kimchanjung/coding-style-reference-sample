@@ -51,7 +51,7 @@ export default function Crawling() {
                 <p>몫</p>
                 <div style={{padding:"50px"}}>{quotient}</div>
                 <p>나머지 </p>
-                <div style={{padding:"50px"}}>{remainder}</div>
+                <div style={{padding:"50px"}} id="riderName">{remainder}</div>
             </div>
         </div>
   )

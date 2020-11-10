@@ -27,7 +27,7 @@ public class WebCrawlingRequest {
     @Min(value = 2, message = "2 이상 입력 해주세요")
     private Integer bundleUnit;
 
-    public static WebCrawlingRequest ofMock(String url, ParsingTypes parsingTypes, Integer bundleUnit) {
+    public static WebCrawlingRequest of(String url, ParsingTypes parsingTypes, Integer bundleUnit) {
         WebCrawlingRequest instance = new WebCrawlingRequest();
         instance.url = url;
         instance.parsingTypes = parsingTypes;

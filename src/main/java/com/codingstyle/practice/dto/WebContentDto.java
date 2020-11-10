@@ -41,8 +41,7 @@ public class WebContentDto {
      * 정렬하기위하여 모두 대분자로 변경후 비교한다.
      */
     private Comparator<String> comparator() {
-        return (a, b) -> a.toUpperCase().equals(b.toUpperCase()) ?
-                a.compareTo(b) : a.toUpperCase().compareTo(b.toUpperCase());
+        return (a, b) -> a.equalsIgnoreCase(b) ? a.compareTo(b) : a.compareToIgnoreCase(b);
     }
 
     /**
