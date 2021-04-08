@@ -2,13 +2,9 @@ package com.codingstyle.practice.commerce.service.impl;
 
 import com.codingstyle.practice.TestWebPracticeConfiguration;
 import com.codingstyle.practice.commerce.dto.*;
-import com.codingstyle.practice.commerce.entity.OrderProduct;
-import com.codingstyle.practice.commerce.entity.Product;
 import com.codingstyle.practice.commerce.eums.ProductCategory;
-import com.codingstyle.practice.commerce.repository.ProductRepository;
 import com.codingstyle.practice.commerce.service.OrderService;
 import com.codingstyle.practice.commerce.service.ProductService;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,9 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by kimchanjung on 2021-04-08 오후 8:04
@@ -49,6 +44,5 @@ class OrderServiceImplTest {
         assertEquals(1L, orderResponse.getOrderProducts().get(0).getId());
         assertEquals(1L, orderResponse.getId());
         assertEquals(4008000, orderResponse.getTotalOrderAmount());
-
     }
 }

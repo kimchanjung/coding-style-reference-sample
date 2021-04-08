@@ -4,6 +4,7 @@ import com.codingstyle.practice.commerce.dto.OrderRequest;
 import com.codingstyle.practice.commerce.dto.OrderResponse;
 import com.codingstyle.practice.commerce.entity.Order;
 import com.codingstyle.practice.commerce.entity.OrderProduct;
+import com.codingstyle.practice.commerce.entity.Product;
 import com.codingstyle.practice.commerce.mapper.OrderMapper;
 import com.codingstyle.practice.commerce.repository.OrderProductRepository;
 import com.codingstyle.practice.commerce.repository.OrderRepository;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by kimchanjung on 2021-04-08 오후 6:54
@@ -40,7 +42,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderResponse order(OrderRequest orderRequest) {
-        return orderMapper.toResponse(orderRepository.save(Order.of(getOrderProducts(orderRequest))));
+        return orderMapper.toResponse(orderRepository.save(Order.of(getProducts(orderRequest))));
+    }
+
+    private List<OrderProduct> getProducts(OrderRequest orderRequest) {
+        return orderRequest.getOrderProductRequests()
+                .stream()
+                .map(v -> orderProductRepository.save(OrderProduct.of(productRepository.findById(v.getProductId())
+                                .orElseThrow(() -> ResourceNotFoundException.notFound("상품")),
+                        v.getProductCount())))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -50,12 +61,4 @@ public class OrderServiceImpl implements OrderService {
                         .orElseThrow(() -> ResourceNotFoundException.notFound("주문")));
     }
 
-    private List<OrderProduct> getOrderProducts(OrderRequest orderRequest) {
-        return orderRequest.getOrderProductRequests().stream()
-                .map(v -> orderProductRepository.save(OrderProduct.of(
-                        productRepository.findById(v.getProductId())
-                                .orElseThrow(() -> ResourceNotFoundException.notFound("상픔")),
-                        v.getProductCount()))).
-                        collect(Collectors.toList());
-    }
 }

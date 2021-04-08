@@ -24,11 +24,9 @@ public class Order {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    @JoinColumn(name = "order_id")
-    private List<OrderProduct> orderProducts;
+    @OneToMany(mappedBy = "order")
+    private final List<OrderProduct> orderProducts = new ArrayList<>();
 
-    @Column(nullable = false)
     private Integer totalOrderAmount;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -39,11 +37,15 @@ public class Order {
 
     public static Order of(List<OrderProduct> orderProducts) {
         Order instance = new Order();
-        instance.orderProducts = orderProducts;
-        instance.totalOrderAmount = orderProducts.stream()
-                .mapToInt(OrderProduct::getProductPrice)
-                .sum();
+        instance.totalOrderAmount = 0;
+        orderProducts.forEach(instance::addOrderProduct);
         return instance;
+    }
+
+    public void addOrderProduct(OrderProduct orderProduct) {
+        orderProducts.add(orderProduct);
+        totalOrderAmount += orderProduct.getProductPrice();
+        orderProduct.amendOrder(this);
     }
 
 }
