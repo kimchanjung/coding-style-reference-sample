@@ -1,0 +1,48 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.homework'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'mysql:mysql-connector-java'
+    // 롬복보다 위에 선언해야 롬복 빌더가 작동된다....
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    implementation 'org.projectlombok:lombok'
+    implementation group: 'org.projectlombok', name: 'lombok-mapstruct-binding', version: '0.2.0'
+
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+    annotationProcessor 'org.projectlombok:lombok'
+
+
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.1.6.Final'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+}
+
+test {
+    useJUnitPlatform()
+}
