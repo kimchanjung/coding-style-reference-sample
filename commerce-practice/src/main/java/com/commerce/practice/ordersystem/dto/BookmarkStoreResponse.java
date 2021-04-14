@@ -1,20 +1,22 @@
 package com.commerce.practice.ordersystem.dto;
 
 import com.commerce.practice.ordersystem.entity.BookmarkStore;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 /**
  * Created by kimchanjung on 2021-04-10 오후 2:46
  */
+@Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BookmarkStoreResponse {
     private Long id;
     private boolean open;
     private StoreResponse storeResponse;
     private LocalDateTime createdAt;
-
-    private BookmarkStoreResponse() {
-    }
 
     public static BookmarkStoreResponse of(Long id, boolean open, StoreResponse storeResponse, LocalDateTime createdAt) {
         BookmarkStoreResponse instance = new BookmarkStoreResponse();
@@ -30,21 +32,5 @@ public class BookmarkStoreResponse {
                 store.getStore().isOpen(),
                 StoreResponse.of(store.getStore()),
                 store.getCreatedAt());
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public boolean isOpen() {
-        return open;
-    }
-
-    public StoreResponse getStoreResponse() {
-        return storeResponse;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 }
