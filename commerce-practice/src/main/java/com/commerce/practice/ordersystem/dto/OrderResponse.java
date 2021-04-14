@@ -3,11 +3,13 @@ package com.commerce.practice.ordersystem.dto;
 
 
 import com.commerce.practice.ordersystem.entity.Order;
+import com.commerce.practice.ordersystem.entity.OrderItem;
 import com.commerce.practice.ordersystem.enums.OrderState;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by kimchanjung on 2021-04-10 오후 2:50
@@ -24,14 +26,14 @@ public class OrderResponse {
 
     private OrderResponse(){}
 
-    public static OrderResponse of(Long id, Long storeId, List<OrderItemResponse> items,
+    public static OrderResponse of(Long id, Long storeId, List<OrderItem> items,
                                    Integer totalPrice, OrderState state, String cancelMsg,
                                    LocalDateTime canceledAt, LocalDateTime completedAt,
                                    LocalDateTime createdAt) {
         OrderResponse instance = new OrderResponse();
         instance.id = id;
         instance.storeId = storeId;
-        instance.items = items;
+        instance.items = items.stream().map(OrderItemResponse::of).collect(Collectors.toList());
         instance.totalPrice = totalPrice;
         instance.state = state.name();
         instance.cancel = Cancel.of(cancelMsg, canceledAt);
@@ -41,7 +43,10 @@ public class OrderResponse {
     }
 
     public static OrderResponse of(Order order) {
-        return new OrderResponse();
+        return OrderResponse.of(order.getId(), order.getStore().getId(),
+                order.getItems(), order.getTotalPrice(), order.getState(),
+                order.getCancelMsg(), order.getCanceledAt(),
+                order.getCompletedAt(), order.getCreatedAt());
     }
 
     public static class Cancel {

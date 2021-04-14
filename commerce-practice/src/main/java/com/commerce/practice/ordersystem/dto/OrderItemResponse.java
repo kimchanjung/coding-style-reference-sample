@@ -1,5 +1,7 @@
 package com.commerce.practice.ordersystem.dto;
 
+import com.commerce.practice.ordersystem.entity.OrderItem;
+
 /**
  * Created by kimchanjung on 2021-04-10 오후 2:50
  */
@@ -19,6 +21,12 @@ public class OrderItemResponse {
         instance.unitPrice = unitPrice;
         instance.unitCount = unitCount;
         return instance;
+    }
+
+    public static OrderItemResponse of(OrderItem orderItem) {
+        return OrderItemResponse.of(orderItem.getId(),
+                orderItem.getName(), orderItem.getUnitPrice(),
+                orderItem.getUnitCount());
     }
 
     public Long getId() {

@@ -1,6 +1,5 @@
 package com.crawling.practice.commerce.service.impl;
 
-import com.crawling.practice.TestWebPracticeConfiguration;
 import com.crawling.practice.commerce.dto.ProductRequest;
 import com.crawling.practice.commerce.dto.ProductResponse;
 import com.crawling.practice.commerce.eums.ProductCategory;
@@ -21,8 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @Slf4j
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = TestWebPracticeConfiguration.class)
+@SpringBootTest
 public class ProductServiceImplTest {
 
     @Autowired

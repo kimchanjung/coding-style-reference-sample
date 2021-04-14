@@ -8,5 +8,17 @@ spring:
   datasource:
     url: jdbc:h2:mem:testdb
     initialization-mode: always
+  jpa:
+    open-in-view: false
+    database: H2
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
   main:
     allow-bean-definition-overriding: true
+  output.ansi.enabled: always

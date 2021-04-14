@@ -1,7 +1,5 @@
 package com.crawling.practice.commerce.service.impl;
 
-import com.crawling.practice.TestWebPracticeConfiguration;
-
 import com.crawling.practice.commerce.eums.ProductCategory;
 import com.crawling.practice.commerce.service.*;
 import com.crawling.practice.commerce.dto.*;
@@ -20,8 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Created by kimchanjung on 2021-04-08 오후 8:04
  */
 @Slf4j
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = TestWebPracticeConfiguration.class)
+@SpringBootTest
 class OrderServiceImplTest {
 
     @Autowired
