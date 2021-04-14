@@ -3,20 +3,23 @@ package com.commerce.practice.ordersystem.dto;
 
 import com.commerce.practice.ordersystem.entity.Store;
 import com.commerce.practice.ordersystem.enums.StoreState;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 /**
  * Created by kimchanjung on 2021-04-10 오후 2:37
  */
+@Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StoreResponse {
     private Long id;
     private String name;
     private String state;
     private BusinessHours businessHours;
     private LocalDateTime createdAt;
-
-    private StoreResponse(){}
 
     public static StoreResponse of(Long id, String name, StoreState state,
                                     BusinessHours businessHours, LocalDateTime createdAt) {
@@ -36,26 +39,7 @@ public class StoreResponse {
                 store.getCreatedAt());
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public BusinessHours getBusinessHours() {
-        return businessHours;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
+    @Getter
     public static class BusinessHours {
         private Integer offDay;
         private boolean run24;
@@ -69,22 +53,6 @@ public class StoreResponse {
             instance.openTime = openTime;
             instance.closeTime = closeTime;
             return instance;
-        }
-
-        public Integer getOffDay() {
-            return offDay;
-        }
-
-        public boolean isRun24() {
-            return run24;
-        }
-
-        public Integer getOpenTime() {
-            return openTime;
-        }
-
-        public Integer getCloseTime() {
-            return closeTime;
         }
     }
 }

@@ -1,5 +1,8 @@
 package com.commerce.practice.ordersystem.entity;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -11,8 +14,10 @@ import java.util.List;
  * Created by kimchanjung on 2021-04-10 오후 2:00
  */
 
-@Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "users")
+@Entity
 public class User {
     @Id
     @Column(name = "id")
@@ -58,41 +63,5 @@ public class User {
     public User login() {
         loginCount++;
         return this;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public Integer getLoginCount() {
-        return loginCount;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public List<BookmarkStore> getBookmarkStores() {
-        return bookmarkStores;
-    }
-
-    public LocalDateTime getLastLoginAt() {
-        return lastLoginAt;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 }

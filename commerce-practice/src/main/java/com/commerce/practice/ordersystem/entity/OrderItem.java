@@ -1,10 +1,16 @@
 package com.commerce.practice.ordersystem.entity;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 /**
  * Created by kimchanjung on 2021-04-10 오후 1:47
  */
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class OrderItem {
     @Id
@@ -34,25 +40,5 @@ public class OrderItem {
 
     public Integer getTotalItemPrice() {
         return unitPrice * unitCount;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getUnitPrice() {
-        return unitPrice;
-    }
-
-    public Integer getUnitCount() {
-        return unitCount;
     }
 }

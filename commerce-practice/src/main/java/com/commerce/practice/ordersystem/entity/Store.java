@@ -2,6 +2,9 @@ package com.commerce.practice.ordersystem.entity;
 
 
 import com.commerce.practice.ordersystem.enums.StoreState;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -10,6 +13,8 @@ import java.time.LocalDateTime;
 /**
  * Created by kimchanjung on 2021-04-10 오후 1:18
  */
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "stores")
 @Entity
 public class Store {
@@ -63,38 +68,6 @@ public class Store {
         this.openTime = 0;
         this.closeTime = setTime(24);
         return this;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public StoreState getState() {
-        return state;
-    }
-
-    public Integer getOffDay() {
-        return offDay;
-    }
-
-    public Boolean getRun24() {
-        return run24;
-    }
-
-    public Integer getOpenTime() {
-        return openTime;
-    }
-
-    public Integer getCloseTime() {
-        return closeTime;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 
     /**

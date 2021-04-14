@@ -1,5 +1,7 @@
 package com.commerce.practice.ordersystem.entity;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -8,6 +10,7 @@ import java.time.LocalDateTime;
 /**
  * Created by kimchanjung on 2021-04-10 오후 1:30
  */
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class BookmarkStore {
     @Id
@@ -22,8 +25,6 @@ public class BookmarkStore {
 
     @CreatedDate
     private LocalDateTime createdAt;
-
-    protected BookmarkStore(){}
 
     public static BookmarkStore of (User user, Store store) {
         BookmarkStore instance = new BookmarkStore();

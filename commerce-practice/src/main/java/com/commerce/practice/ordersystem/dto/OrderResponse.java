@@ -5,6 +5,9 @@ package com.commerce.practice.ordersystem.dto;
 import com.commerce.practice.ordersystem.entity.Order;
 import com.commerce.practice.ordersystem.entity.OrderItem;
 import com.commerce.practice.ordersystem.enums.OrderState;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,6 +17,8 @@ import java.util.stream.Collectors;
 /**
  * Created by kimchanjung on 2021-04-10 오후 2:50
  */
+@Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class OrderResponse {
     private Long id;
     private Long storeId;
@@ -23,8 +28,6 @@ public class OrderResponse {
     private Cancel cancel;
     private LocalDateTime completedAt;
     private LocalDateTime createdAt;
-
-    private OrderResponse(){}
 
     public static OrderResponse of(Long id, Long storeId, List<OrderItem> items,
                                    Integer totalPrice, OrderState state, String cancelMsg,
@@ -70,37 +73,5 @@ public class OrderResponse {
         public LocalDateTime getTime() {
             return time;
         }
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Long getStoreId() {
-        return storeId;
-    }
-
-    public List<OrderItemResponse> getItems() {
-        return items;
-    }
-
-    public Integer getTotalPrice() {
-        return totalPrice;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public Cancel getCancel() {
-        return cancel;
-    }
-
-    public LocalDateTime getCompletedAt() {
-        return completedAt;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 }

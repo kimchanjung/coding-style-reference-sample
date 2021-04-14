@@ -2,6 +2,9 @@ package com.commerce.practice.ordersystem.entity;
 
 
 import com.commerce.practice.ordersystem.enums.OrderState;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -15,7 +18,9 @@ import static java.util.Optional.*;
 /**
  * Created by kimchanjung on 2021-04-10 오후 1:35
  */
+@Getter
 @Table(name = "orders")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Order {
     @Id
@@ -54,12 +59,9 @@ public class Order {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    protected Order() {
-    }
-
     public static Order ofNew(User user, Store store) {
         Order instance = new Order();
-        instance.user = user;
+        instance.user = user.addOrder(instance);
         instance.store = store;
         instance.state = OrderState.NEW;
         return instance;
@@ -67,7 +69,7 @@ public class Order {
 
     public static Order ofNew(User user, Store store, List<OrderItem> orderItems) {
         Order instance = new Order();
-        instance.user = user;
+        instance.user = user.addOrder(instance);;
         instance.store = store;
         instance.state = OrderState.NEW;
         instance.items.addAll(orderItems);
@@ -105,41 +107,5 @@ public class Order {
         return items.stream()
                 .mapToInt(OrderItem::getTotalItemPrice)
                 .sum();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public List<OrderItem> getItems() {
-        return items;
-    }
-
-    public OrderState getState() {
-        return state;
-    }
-
-    public String getCancelMsg() {
-        return cancelMsg;
-    }
-
-    public LocalDateTime getCanceledAt() {
-        return canceledAt;
-    }
-
-    public LocalDateTime getCompletedAt() {
-        return completedAt;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 }

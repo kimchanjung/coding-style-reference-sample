@@ -1,5 +1,9 @@
 package com.commerce.practice.ordersystem.dto;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -7,6 +11,8 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by kimchanjung on 2021-04-10 오후 3:19
  */
+@Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class OrderItemRequest {
     @NotBlank(message = "상품명을 입력해주세요.")
     private String name;
@@ -23,17 +29,5 @@ public class OrderItemRequest {
         instance.unitPrice = unitPrice;
         instance.unitCount = unitCount;
         return instance;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getUnitPrice() {
-        return unitPrice;
-    }
-
-    public Integer getUnitCount() {
-        return unitCount;
     }
 }
