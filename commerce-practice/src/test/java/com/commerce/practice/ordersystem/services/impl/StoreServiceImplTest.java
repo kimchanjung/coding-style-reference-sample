@@ -1,6 +1,5 @@
 package com.commerce.practice.ordersystem.services.impl;
 
-import com.commerce.TestConfiguration;
 import com.commerce.practice.ordersystem.dto.StoreResponse;
 import com.commerce.practice.ordersystem.entity.Store;
 import com.commerce.practice.ordersystem.mocks.MockEntity;
@@ -24,8 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 @Slf4j
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = TestConfiguration.class)
+@SpringBootTest
 class StoreServiceImplTest {
 
     @Autowired

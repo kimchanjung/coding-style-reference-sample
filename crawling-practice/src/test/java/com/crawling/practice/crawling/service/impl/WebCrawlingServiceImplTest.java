@@ -1,16 +1,13 @@
 package com.crawling.practice.crawling.service.impl;
 
-import com.crawling.practice.TestWebPracticeConfiguration;
 import com.crawling.practice.crawling.dto.WebCrawlingRequest;
 import com.crawling.practice.crawling.dto.WebCrawlingResponse;
 import com.crawling.practice.crawling.enums.ParsingTypes;
 import com.crawling.practice.crawling.service.WebCrawlingService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -19,8 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  */
 
 @Slf4j
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = TestWebPracticeConfiguration.class)
+@SpringBootTest
 public class WebCrawlingServiceImplTest {
 
     @Autowired
