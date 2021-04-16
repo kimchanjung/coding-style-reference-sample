@@ -1,14 +1,11 @@
 package com.commerce.practice.ordersystem.mocks;
 
 import com.commerce.practice.ordersystem.entity.*;
-import com.commerce.practice.ordersystem.enums.OrderState;
 import com.commerce.practice.ordersystem.enums.StoreState;
 import com.commerce.practice.ordersystem.repositories.*;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -24,15 +21,16 @@ public class MockEntity {
 
     private final UserRepository userRepository;
     private final StoreRepository storeRepository;
-    private final BookmarkStoreRepository bookmarkStoreRepository;
+    private final BookmarkedStoreRepository bookmarkedStoreRepository;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
 
     public MockEntity(UserRepository userRepository, StoreRepository storeRepository,
-                      BookmarkStoreRepository bookmarkStoreRepository, OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
+                      BookmarkedStoreRepository bookmarkedStoreRepository, OrderRepository orderRepository,
+                      OrderItemRepository orderItemRepository) {
         this.userRepository = userRepository;
         this.storeRepository = storeRepository;
-        this.bookmarkStoreRepository = bookmarkStoreRepository;
+        this.bookmarkedStoreRepository = bookmarkedStoreRepository;
         this.orderRepository = orderRepository;
         this.orderItemRepository = orderItemRepository;
     }
@@ -42,15 +40,15 @@ public class MockEntity {
     }
 
     public User creatUser() {
-        return userRepository.save(User.of("김찬정" + randomNumber(), "kimchanjung.dev@gmail.com", "1234"));
+        return userRepository.save(User.ofNew("김찬정" + randomNumber(), "kimchanjung.dev@gmail.com", "1234"));
     }
 
     public Store createStore() {
-        return storeRepository.save(Store.of("홍콩반점" + randomNumber(), StoreState.NORMAL, 1, false, 11, 22));
+        return storeRepository.save(Store.ofNew("홍콩반점" + randomNumber(), StoreState.NORMAL, 1, true, 11, 22));
     }
 
     public Store createStore(Integer offDay, boolean run24, Integer openTime, Integer closeTime) {
-        return storeRepository.save(Store.of("홍콩반점" + randomNumber(), StoreState.NORMAL, offDay, false, openTime, closeTime));
+        return storeRepository.save(Store.ofNew("홍콩반점" + randomNumber(), StoreState.NORMAL, offDay, false, openTime, closeTime));
     }
 
     public List<Store> createStores(int size) {
@@ -58,25 +56,25 @@ public class MockEntity {
     }
 
 
-    public BookmarkStore createBookmarkStore() {
-        return bookmarkStoreRepository.save(BookmarkStore.of(creatUser(), createStore()));
+    public BookmarkedStore createBookmarkStore() {
+        return bookmarkedStoreRepository.save(BookmarkedStore.ofNew(creatUser(), createStore()));
     }
 
     public Order createOrder() {
-        Order order = Order.ofNew(creatUser(), createStore());
-        OrderItem.ofNew(order, "햄버거" + randomNumber(), 5000, 1);
-        OrderItem.ofNew(order, "콜" + randomNumber(), 2000, 2);
-        return orderRepository.save(order);
+        Order order = orderRepository.save(Order.ofNew(creatUser(), createStore()));
+        orderItemRepository.save(OrderItem.ofNew(order, "햄버거" + randomNumber(), 5000, 1));
+        orderItemRepository.save(OrderItem.ofNew(order, "콜" + randomNumber(), 2000, 2));
+        return order;
     }
 
     public Order createOrder(User user) {
-        Order order = Order.ofNew(user, createStore());
-        OrderItem.ofNew(order, "햄버거" + randomNumber(), 5000, 1);
-        OrderItem.ofNew(order, "콜" + randomNumber(), 2000, 2);
-        return orderRepository.save(order);
+        Order order = orderRepository.save(Order.ofNew(user, createStore()));
+        orderItemRepository.save(OrderItem.ofNew(order, "햄버거" + randomNumber(), 5000, 1));
+        orderItemRepository.save(OrderItem.ofNew(order, "콜" + randomNumber(), 2000, 2));
+        return order;
     }
 
-    public Order createOrder(OrderState state) {
+    public Order completeOrder() {
         Order order = createOrder();
         order.complete();
         return order;

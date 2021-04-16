@@ -37,6 +37,8 @@ class OrderServiceImplTest {
         // When
         OrderResponse orderResponse = orderService.order(orderRequest);
 
+        orderResponse.getOrderProducts().forEach(v -> log.info("sss = "+v.getId()));
+
         // Then
         assertEquals(1L, orderResponse.getOrderProducts().get(0).getId());
         assertEquals(1L, orderResponse.getId());

@@ -6,6 +6,7 @@ import com.commerce.practice.ordersystem.mocks.MockEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 
@@ -32,10 +33,14 @@ class StoreRepositoryTest {
     @Test
     public void test() {
         //Given
-        Store store = mockEntity.createStore(2, true, LocalDateTime.now().getHour(), LocalDateTime.now().getHour() + 5);
+        Store store = mockEntity.createStore(2, true,
+                LocalDateTime.now().getHour(), LocalDateTime.now().getHour() + 5);
 
         //When
-        List<Store> allByOffDayBefore = storeRepository.findAllByOffDayNotAndOpenTimeLessThanEqualAndCloseTimeGreaterThanEqual(1, LocalDateTime.now().get(ChronoField.MINUTE_OF_DAY),  LocalDateTime.now().get(ChronoField.MINUTE_OF_DAY));
+        List<Store> allByOffDayBefore = storeRepository
+                .findAllByOffDayNotAndOpenTimeLessThanEqualAndCloseTimeGreaterThanEqual(
+                        1, LocalDateTime.now().get(ChronoField.MINUTE_OF_DAY),
+                        LocalDateTime.now().get(ChronoField.MINUTE_OF_DAY));
 
         //Then
         assertEquals(1, allByOffDayBefore.size());

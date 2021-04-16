@@ -3,6 +3,7 @@ package com.commerce.practice.ordersystem.entity;
 
 import com.commerce.practice.ordersystem.enums.OrderState;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,16 +13,16 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static java.util.Optional.*;
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
 
 /**
  * Created by kimchanjung on 2021-04-10 오후 1:35
  */
 @Getter
+@Entity
 @Table(name = "orders")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +35,7 @@ public class Order {
     private Store store;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    private final List<OrderItem> items = new ArrayList<>();
+    private List<OrderItem> items = new ArrayList<>();
 
     @Column(nullable = false)
     private OrderState state;
@@ -59,6 +60,7 @@ public class Order {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
+    @Builder
     public static Order ofNew(User user, Store store) {
         Order instance = new Order();
         instance.user = user.addOrder(instance);
@@ -67,17 +69,8 @@ public class Order {
         return instance;
     }
 
-    public static Order ofNew(User user, Store store, List<OrderItem> orderItems) {
-        Order instance = new Order();
-        instance.user = user.addOrder(instance);;
-        instance.store = store;
-        instance.state = OrderState.NEW;
-        instance.items.addAll(orderItems);
-        return instance;
-    }
 
-
-    public Order addItem(OrderItem item) {
+    protected Order addItem(OrderItem item) {
         if (!this.items.contains(item)) {
             this.items.add(item);
         }
@@ -87,18 +80,20 @@ public class Order {
 
 
     public Optional<Order> cancel(String cancelMsg) {
-        if (!this.state.changeableState(OrderState.CANCEL))
+        if (this.state.stateChangeable(OrderState.CANCEL))
             return empty();
         this.cancelMsg = cancelMsg;
         this.canceledAt = LocalDateTime.now();
+        this.state = OrderState.CANCEL;
 
         return of(this);
     }
 
     public Optional<Order> complete() {
-        if (!this.state.changeableState(OrderState.COMPLETE))
+        if (this.state.stateChangeable(OrderState.COMPLETE))
             return empty();
         this.completedAt = LocalDateTime.now();
+        this.state = OrderState.COMPLETE;
 
         return of(this);
     }

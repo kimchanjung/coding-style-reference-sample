@@ -1,10 +1,4 @@
--- resouce/schema-{데이터베이스종류}.sql
--- resouce/data-{데이터베이스종류}.sql
--- 하면 실행된다.
--- spring.datasource.initialization-mode: always, never...
--- 위 설정에 따라 실행 여부를 결정한다
--- 보통 jpa 사용하면 테이블은 생성이 되는데
--- 아래 스키마와 같은 entity생성을 확인 해볼 요량사용 할 수 있다.
+
 DROP TABLE IF EXISTS order_items CASCADE;
 
 DROP TABLE IF EXISTS orders CASCADE;
@@ -107,7 +101,7 @@ created_at   datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
 
 PRIMARY KEY (id),
 
-INDEX        idx_user_id_created_at (user_id, created_at),
+INDEX idx_user_id_created_at (user_id, created_at),
 
 CONSTRAINT fk_orders_to_users FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
 

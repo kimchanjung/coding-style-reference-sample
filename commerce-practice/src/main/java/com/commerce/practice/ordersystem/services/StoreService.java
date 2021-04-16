@@ -12,5 +12,8 @@ import java.util.List;
  */
 public interface StoreService {
     Store findOneById(Long id);
+
     List<StoreResponse> findAllByTime(LocalDateTime time);
+
+    Store findOneOpenShopById(Long id);
 }

@@ -34,14 +34,22 @@ class StoreServiceImplTest {
     @Test
     public void 상점목록을_정상적으로_가져온다() {
         //Given
-        List<Store> stores = mockEntity.createStores(4);
-        mockEntity.createStore(2, true, LocalDateTime.now().getHour() + 1, LocalDateTime.now().getHour() + 2);
+        mockEntity.createStores(4);
         LocalDateTime now = LocalDateTime.now();
+        mockEntity.createStore(2, true,
+                LocalDateTime.now().getHour() + 1, LocalDateTime.now().getHour() + 2);
 
         //When
         List<StoreResponse> storeResponses = storeService.findAllByTime(now);
 
         //Then
-        storeResponses.forEach(store -> assertTrue(store.getBusinessHours().getOpenTime() <= now.get(ChronoField.MINUTE_OF_DAY)));
+        storeResponses.forEach(store -> {
+            assertTrue(store.getBusinessHours().getOpenTime() <= now.get(ChronoField.MINUTE_OF_DAY));
+            assertNotNull(store.getId());
+            assertNotNull(store.getName());
+            assertNotNull(store.getName());
+            assertNotNull(store.getBusinessHours().getOffDay());
+            assertNotNull(store.getBusinessHours().getCloseTime());
+        });
     }
 }
