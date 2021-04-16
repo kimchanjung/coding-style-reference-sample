@@ -1,8 +1,7 @@
 package com.commerce.practice.configuration;
 
-import com.commerce.practice.ordersystem.mocks.MockEntity;
-import com.commerce.practice.ordersystem.repositories.*;
-import lombok.AllArgsConstructor;
+import com.commerce.practice.mocks.MockEntity;
+import com.commerce.practice.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,16 +11,19 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class TestMockConfiguration {
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private StoreRepository storeRepository;
-    @Autowired
-    private BookmarkedStoreRepository bookmarkStoreRepository;
-    @Autowired
-    private OrderRepository orderRepository;
-    @Autowired
-    private OrderItemRepository orderItemRepository;
+    private final UserRepository userRepository;
+    private final StoreRepository storeRepository;
+    private final BookmarkedStoreRepository bookmarkStoreRepository;
+    private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
+
+    public TestMockConfiguration(UserRepository userRepository, StoreRepository storeRepository, BookmarkedStoreRepository bookmarkStoreRepository, OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
+        this.userRepository = userRepository;
+        this.storeRepository = storeRepository;
+        this.bookmarkStoreRepository = bookmarkStoreRepository;
+        this.orderRepository = orderRepository;
+        this.orderItemRepository = orderItemRepository;
+    }
 
     @Bean
     public MockEntity mockEntity() {
