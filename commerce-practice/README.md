@@ -49,11 +49,11 @@ MapStruct v1.4.2
 - 주문 존재 여부 체크
 - 주문 취소 가능 상태 체크
 - PATCH http://localhost:8080/api/orders/1/cancel
- ```json
-  {
-    "message": "주문실수"
-  }
- ```
+    ```json
+    {
+        "message": "주문실수"
+    }
+    ```
 
 # 프로젝트 구조
 #### 메인 비즈니스 로직 
