@@ -1,6 +1,6 @@
 package com.commerce.practice.ex;
 
-import com.commerce.practice.ordersystem.utils.ResponseForm;
+import com.commerce.practice.utils.ResponseForm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;

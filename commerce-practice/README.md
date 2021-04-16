@@ -57,9 +57,10 @@ MapStruct v1.4.2
 
 # 프로젝트 구조
 #### 메인 비즈니스 로직 
-- com.commerce.practice.ordersystem
+- com.commerce.practice
 
 #### 레이어별 분류
+- configuration - 설정 클래스 
 - controllers - 컨트롤러 
 - dto - Data Transfer Object
 - entity - JPA 엔티티 클래스
@@ -69,6 +70,7 @@ MapStruct v1.4.2
 - repositories - JPA repository
 - services - 메인 비즈니스 로직 
 - util - 각종 유틸리티 클래스 
+- ex - 예외 클래스 
 
 #### 실행방법
 - 로컬에서 실행시  http://localhost:8080 접속
