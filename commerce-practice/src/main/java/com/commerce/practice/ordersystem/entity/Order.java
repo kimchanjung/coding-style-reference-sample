@@ -69,7 +69,6 @@ public class Order {
         return instance;
     }
 
-
     protected Order addItem(OrderItem item) {
         if (!this.items.contains(item)) {
             this.items.add(item);
@@ -77,7 +76,6 @@ public class Order {
 
         return this;
     }
-
 
     public Optional<Order> cancel(String cancelMsg) {
         if (this.state.stateChangeable(OrderState.CANCEL))
