@@ -2,7 +2,7 @@ package com.crawling.practice.crawling.service.impl;
 
 import com.crawling.practice.crawling.dto.WebContentDto;
 import com.crawling.practice.crawling.enums.ParsingTypes;
-import com.crawling.practice.ex.HttpBadRequestException;
+import com.crawling.practice.ex.BadRequestException;
 import com.crawling.practice.crawling.service.JsoupService;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
@@ -29,11 +29,11 @@ public class JsoupServiceImpl implements JsoupService {
                             .execute()
                             .parse()));
         } catch (IllegalArgumentException e) {
-            throw HttpBadRequestException.notFoundProtocol(e);
+            throw BadRequestException.notFoundProtocol(e);
         } catch (HttpStatusException e) {
-            throw HttpBadRequestException.badRequestException(e);
+            throw BadRequestException.badRequestException(e);
         } catch (IOException e) {
-            throw HttpBadRequestException.notFoundSite(e);
+            throw BadRequestException.notFoundSite(e);
         }
     }
 }

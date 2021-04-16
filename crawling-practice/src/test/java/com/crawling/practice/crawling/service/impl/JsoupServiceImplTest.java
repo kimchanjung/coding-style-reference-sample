@@ -1,7 +1,7 @@
 package com.crawling.practice.crawling.service.impl;
 
 import com.crawling.practice.crawling.enums.ParsingTypes;
-import com.crawling.practice.ex.HttpBadRequestException;
+import com.crawling.practice.ex.BadRequestException;
 import com.crawling.practice.crawling.service.JsoupService;
 import com.crawling.practice.crawling.dto.WebContentDto;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +46,7 @@ public class JsoupServiceImplTest {
     @Test
     public void URL_올바르지않으면_예외를_발생한다() {
         //Given & When & Then
-        assertThrows(HttpBadRequestException.class, () -> jsoupService.parse("http://localhost:1000", ParsingTypes.WITHOUT_TAG));
+        assertThrows(BadRequestException.class, () -> jsoupService.parse("http://localhost:1000", ParsingTypes.WITHOUT_TAG));
     }
 
 }

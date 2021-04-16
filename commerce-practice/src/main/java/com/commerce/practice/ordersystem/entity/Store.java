@@ -3,20 +3,25 @@ package com.commerce.practice.ordersystem.entity;
 
 import com.commerce.practice.ordersystem.enums.StoreState;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Optional;
+
+import static java.util.Optional.*;
 
 /**
  * Created by kimchanjung on 2021-04-10 오후 1:18
  */
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "stores")
 @Entity
+@Table(name = "stores")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +38,11 @@ public class Store {
     private Integer openTime = 0;
     @Column(nullable = false)
     private Integer closeTime = 24 * 60;
-    @CreatedDate
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
-    public static Store of(String name, StoreState state, Integer offDay, Boolean run24, Integer openTime, Integer closeTime) {
+    @Builder
+    public static Store ofNew(String name, StoreState state, Integer offDay, Boolean run24, Integer openTime, Integer closeTime) {
         Store instance = new Store();
         instance.name = name;
         instance.state = state;
@@ -53,9 +59,11 @@ public class Store {
         return instance;
     }
 
-    private static Integer setTime(Integer openTime) {
-        return openTime * 60;
+    private static Integer setTime(Integer time) {
+        System.out.println(time * 60);
+        return time * 60;
     }
+
 
 
     public Store enableRun24(Integer openTime, Integer closeTime) {
@@ -70,10 +78,12 @@ public class Store {
         return this;
     }
 
-    /**
-     * TODO - 상점오픈여부 로직추가
-     */
     public boolean isOpen() {
-        return true;
+        LocalDateTime now = LocalDateTime.now();
+        int seconds = now.getHour() * 60 + now.getMinute();
+
+        return state.equals(StoreState.NORMAL)
+                && offDay != now.getDayOfWeek().getValue()
+                && seconds >= openTime && closeTime >= seconds;
     }
 }

@@ -6,14 +6,16 @@ spring:
       enabled: true
       path: /h2-console
   datasource:
-    url: jdbc:h2:mem:testdb
-    initialization-mode: always
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    initialization-mode: embedded
+    data: classpath:data-h2.sql
+    schema: classpath:schema-h2.sql
   jpa:
     open-in-view: false
     database: H2
-    generate-ddl: true
+    generate-ddl: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate:
@@ -21,4 +23,7 @@ spring:
         use_sql_comments: true
   main:
     allow-bean-definition-overriding: true
+  mvc:
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
   output.ansi.enabled: always

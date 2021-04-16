@@ -1,6 +1,7 @@
 package com.crawling.practice.commerce.dto;
 
 import com.crawling.practice.commerce.entity.Product;
+import com.crawling.practice.commerce.repository.ProductRepository;
 import lombok.*;
 
 /**
@@ -12,6 +13,6 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class OrderProductResponse {
     private Long id;
-    private Product product;
+    private ProductResponse product;
     private Integer productCount;
 }

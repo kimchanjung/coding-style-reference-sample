@@ -1,8 +1,6 @@
 package com.commerce.practice.ordersystem.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,8 +8,9 @@ import javax.persistence.*;
  * Created by kimchanjung on 2021-04-10 오후 1:47
  */
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
+@Table(name = "order_items")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -29,6 +28,7 @@ public class OrderItem {
     @Column(nullable = false)
     private Integer unitCount;
 
+    @Builder
     public static OrderItem ofNew(Order order, String name, Integer unitPrice, Integer unitCount) {
         OrderItem instance = new OrderItem();
         instance.order = order.addItem(instance);
