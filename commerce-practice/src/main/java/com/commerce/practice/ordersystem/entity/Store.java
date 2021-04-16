@@ -64,8 +64,6 @@ public class Store {
         return time * 60;
     }
 
-
-
     public Store enableRun24(Integer openTime, Integer closeTime) {
         this.openTime = openTime;
         this.closeTime = closeTime;
