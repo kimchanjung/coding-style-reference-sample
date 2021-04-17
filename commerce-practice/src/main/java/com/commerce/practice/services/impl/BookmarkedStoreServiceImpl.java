@@ -49,15 +49,11 @@ public class BookmarkedStoreServiceImpl implements BookmarkedStoreService {
 
     @Override
     public BookmarkedStoreResponse bookmark(Long userId, Long storeId) {
-        bookmarkedStoreRepository.findByUserIdAndStoreId(userId, storeId)
-                .ifPresent(v -> {
-                    throw BadRequestException.alreadyBookmarked(v.getStore().getName());
-                });
-        Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> ResourceNotFoundException.notFound("업소"));
-
-        return mapper.toDto(bookmarkedStoreRepository
-                .save(BookmarkedStore.ofNew(userService.findMe(userId), store)));
+        return mapper.toDto(bookmarkedStoreRepository.findByUserIdAndStoreId(userId, storeId)
+                .orElseGet(() -> storeRepository.findById(storeId)
+                        .map(store -> bookmarkedStoreRepository
+                                .save(BookmarkedStore.ofNew(userService.findMe(userId), store)))
+                        .orElseThrow(() -> ResourceNotFoundException.notFound("업소"))));
     }
 
     @Override
