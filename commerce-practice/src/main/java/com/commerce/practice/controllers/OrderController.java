@@ -11,6 +11,8 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.commerce.practice.utils.ResponseForm.ok;
+
 /**
  * Created by kimchanjung on 2021-04-15 오전 11:27
  */
@@ -27,7 +29,7 @@ public class OrderController {
     @RequestMapping(value = "/between/{from}/and/{to}", method = RequestMethod.GET)
     public ResponseForm<List<OrderResponse>> findAll(@PathVariable("from") LocalDateTime from,
                                                      @PathVariable("to") LocalDateTime to) {
-        return ResponseForm.ok(orderService.findAllBy(1L, from, to));
+        return ok(orderService.findAllBy(1L, from, to));
     }
     /**
      * 세션에서 유저아이디로 User를 가져오지만
@@ -36,13 +38,13 @@ public class OrderController {
     @RequestMapping(value = "/store/{storeId}", method = RequestMethod.POST)
     public ResponseForm<OrderResponse> order(@PathVariable("storeId") Long storeId,
                                   @Valid @RequestBody List<OrderItemRequest> request) {
-        return ResponseForm.ok(orderService.order(1L, storeId, request));
+        return ok(orderService.order(1L, storeId, request));
     }
 
     @RequestMapping(value = "/{orderId}/cancel", method = RequestMethod.PATCH)
     public ResponseForm<OrderResponse> cancel(@PathVariable("orderId") Long orderId,
                                               @Valid @RequestBody CancelOrderRequest request) {
-        return ResponseForm.ok(orderService.cancel(1L, orderId, request.getMessage()));
+        return ok(orderService.cancel(1L, orderId, request.getMessage()));
     }
 }
 

@@ -75,7 +75,7 @@ class BookmarkedStoreControllerServiceImplTest {
     }
 
     @Test
-    public void 북마크를_삭제할수_없는경우_예외를발생한다() {
+    public void 북마크를_삭제할_수_없는경우_예외를발생한다() {
         //Given
         BookmarkedStore bookmarkedStore = mockEntity.createBookmarkStore();
 

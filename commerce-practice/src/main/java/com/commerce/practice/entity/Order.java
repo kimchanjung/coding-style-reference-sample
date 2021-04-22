@@ -97,7 +97,6 @@ public class Order {
     }
 
     public Integer getTotalPrice() {
-
         return items.stream()
                 .mapToInt(OrderItem::getTotalItemPrice)
                 .sum();

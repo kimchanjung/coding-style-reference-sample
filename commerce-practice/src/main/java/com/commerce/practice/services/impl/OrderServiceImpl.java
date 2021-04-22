@@ -54,21 +54,19 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderResponse order(Long userId, Long storeId, List<OrderItemRequest> orderItems) {
-        return storeService.findOneOpenShopById(storeId)
+        return mapper.toDto(storeService.findOneOpenShopById(storeId)
                 .map(store -> orderRepository.save(Order.ofNew(userService.findMe(userId), store)))
                 .map(order -> orderItems.stream()
                         .map(v -> orderItemRepository.save(orderItemMapper.toEntity(order, v)))
-                        .collect(Collectors.toList()).get(0)
-                        .getOrder())
-                .map(mapper::toDto)
-                .orElseThrow(BadRequestException::closed);
+                        .collect(Collectors.toList()).get(0).getOrder())
+                .orElseThrow(BadRequestException::closed));
     }
 
     @Override
     public OrderResponse cancel(Long userId, Long orderId, String cancelMsg) {
-        return orderRepository.findByIdAndUserId(orderId, userId)
-                .map(v -> v.cancel(cancelMsg).map(mapper::toDto)
-                        .orElseThrow(() -> BadRequestException.badStatus(v.getState().getDesc())))
-                .orElseThrow(() -> ResourceNotFoundException.notFound("주문"));
+        return mapper.toDto(orderRepository.findByIdAndUserId(orderId, userId)
+                .map(order -> order.cancel(cancelMsg)
+                        .orElseThrow(() -> BadRequestException.badStatus(order.getState().getDesc())))
+                .orElseThrow(() -> ResourceNotFoundException.notFound("주문")));
     }
 }

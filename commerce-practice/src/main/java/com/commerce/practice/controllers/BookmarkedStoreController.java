@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.commerce.practice.utils.ResponseForm.ok;
+
 /**
  * Created by kimchanjung on 2021-04-15 오전 11:27
  */
@@ -30,17 +32,17 @@ public class BookmarkedStoreController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseForm<List<BookmarkedStoreResponse>> findAll(
             @RequestParam(name = "time", required = false) LocalDateTime time) {
-        return ResponseForm.ok(bookmarkedStoreService.findAll(1L, time == null ? LocalDateTime.now() : time));
+
+        return ok(bookmarkedStoreService.findAll(1L, time == null ? LocalDateTime.now() : time));
     }
 
     @RequestMapping(value = "/{storeId}/bookmark", method = RequestMethod.POST)
     public ResponseForm<BookmarkedStoreResponse> bookmark(@PathVariable("storeId") Long storeId) {
-        return ResponseForm.ok(bookmarkedStoreService.bookmark(1L, storeId));
+        return ok(bookmarkedStoreService.bookmark(1L, storeId));
     }
 
     @RequestMapping(value = "/{storeId}/bookmark", method = RequestMethod.DELETE)
     public ResponseForm<Boolean> delete(@PathVariable("storeId") Long storeId) {
-        return ResponseForm.ok(bookmarkedStoreService.delete(1L, storeId));
+        return ok(bookmarkedStoreService.delete(1L, storeId));
     }
-
 }

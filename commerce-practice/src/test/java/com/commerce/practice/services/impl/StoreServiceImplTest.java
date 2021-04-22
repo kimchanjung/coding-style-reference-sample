@@ -31,8 +31,8 @@ class StoreServiceImplTest {
     @Test
     public void 상점목록을_정상적으로_가져온다() {
         //Given
-        mockEntity.createStores(4);
         LocalDateTime now = LocalDateTime.now();
+        mockEntity.createStores(4);
         mockEntity.createStore(2, true,
                 LocalDateTime.now().getHour() + 1, LocalDateTime.now().getHour() + 2);
 
