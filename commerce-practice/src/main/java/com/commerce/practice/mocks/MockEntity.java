@@ -79,9 +79,9 @@ public class MockEntity {
     }
 
     public Order completeOrder() {
-        Order order = createOrder();
-        order.complete();
-        return order;
+        return createOrder()
+                .complete()
+                .orElse(null);
     }
 
     public List<Order> createOrders(Integer size, boolean onlyOneUser) {

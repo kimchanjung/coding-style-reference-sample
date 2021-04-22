@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.commerce.practice.utils.ResponseForm.ok;
+
 /**
  * Created by kimchanjung on 2021-04-15 오전 11:27
  */
@@ -29,6 +31,6 @@ public class StoreController {
     public ResponseForm<List<StoreResponse>> findAll(@RequestParam(name = "time", required = false)
                                                          @DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")
                                                                  LocalDateTime time) {
-        return ResponseForm.ok(storeService.findAllByTime(time == null ? LocalDateTime.now() : time));
+        return ok(storeService.findAllByTime(time == null ? LocalDateTime.now() : time));
     }
 }

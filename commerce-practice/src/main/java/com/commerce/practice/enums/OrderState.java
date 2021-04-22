@@ -27,5 +27,4 @@ public enum OrderState {
     public boolean stateChangeable(OrderState state) {
         return !this.next.contains(state.desc);
     }
-
 }
