@@ -2,6 +2,7 @@ package com.commerce.practice.entity;
 
 import com.commerce.practice.enums.StoreState;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -16,10 +17,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Slf4j
 class StoreTest {
 
+    private static int OFF_DAY;
+
+    @BeforeAll
+    public static void setup() {
+        OFF_DAY = LocalDateTime.now().minusDays(1).getDayOfWeek().getValue();
+    }
+
+
+
     @Test
     public void 업소_영업중이다() {
         //Given
-        Store 홍콩반점 = Store.ofNew("홍콩반점", StoreState.NORMAL, 1, false, 0, 24);
+        Store 홍콩반점 = Store.ofNew("홍콩반점", StoreState.NORMAL, OFF_DAY, false, 0, 24);
 
         //When & Then
         assertTrue(홍콩반점.isOpen());
@@ -28,7 +38,7 @@ class StoreTest {
     @Test
     public void 업소는_숨김업소이다() {
         //Given
-        Store 홍콩반점 = Store.ofNew("홍콩반점", StoreState.HIDDEN, 1, false, 0, 24);
+        Store 홍콩반점 = Store.ofNew("홍콩반점", StoreState.HIDDEN, OFF_DAY, false, 0, 24);
 
         //When & Then
         assertFalse(홍콩반점.isOpen());

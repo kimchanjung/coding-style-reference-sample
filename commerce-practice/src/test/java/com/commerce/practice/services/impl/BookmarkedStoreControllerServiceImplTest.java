@@ -83,5 +83,4 @@ class BookmarkedStoreControllerServiceImplTest {
         assertThrows(ResourceNotFoundException.class, () ->
                 bookmarkedStoreService.delete(bookmarkedStore.getUser().getId(), 100L));
     }
-
 }

@@ -7,6 +7,7 @@ import com.commerce.practice.repositories.*;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -24,6 +25,7 @@ public class MockEntity {
     private final BookmarkedStoreRepository bookmarkedStoreRepository;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
+    private static final int OFF_DAY = LocalDateTime.now().minusDays(1).getDayOfWeek().getValue();
 
     public MockEntity(UserRepository userRepository, StoreRepository storeRepository,
                       BookmarkedStoreRepository bookmarkedStoreRepository, OrderRepository orderRepository,
@@ -46,7 +48,7 @@ public class MockEntity {
 
     public Store createStore() {
         return storeRepository.save(Store.ofNew("홍콩반점" + randomNumber(),
-                StoreState.NORMAL, 1, true, 11, 22));
+                StoreState.NORMAL, OFF_DAY, true, 11, 22));
     }
 
     public Store createStore(Integer offDay, boolean run24, Integer openTime, Integer closeTime) {

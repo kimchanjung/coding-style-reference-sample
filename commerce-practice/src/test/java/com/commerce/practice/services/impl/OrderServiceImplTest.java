@@ -83,7 +83,6 @@ class OrderServiceImplTest {
         assertEquals(9000, response.getTotalPrice());
     }
 
-
     @Test
     public void 주문이_정상적으로_취소된다() {
         //Given
@@ -117,5 +116,4 @@ class OrderServiceImplTest {
         assertThrows(BadRequestException.class, () ->
                 orderService.cancel(order.getUser().getId(), order.getId(), "잘못된주문으로 취소요청"));
     }
-
 }

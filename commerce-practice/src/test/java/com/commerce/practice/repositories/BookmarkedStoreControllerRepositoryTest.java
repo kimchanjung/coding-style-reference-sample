@@ -55,5 +55,4 @@ class BookmarkedStoreControllerRepositoryTest {
         assertEquals(bookmarkedStore.getId(), response.getId());
         assertEquals(bookmarkedStore.getUser().getEmail(), response.getUser().getEmail());
     }
-
 }
