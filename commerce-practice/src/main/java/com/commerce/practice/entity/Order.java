@@ -13,11 +13,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
 /**
  * Created by kimchanjung on 2021-04-10 오후 1:35
+ * [엔티티 관계에서 기본패치전략]
+ * 기본패치전략을 그대로 사용하는 경우 생략해도 되지만
+ * 사람은 항상 햇갈릴 수 있기 때문에 명시적으로 설정해주는 편이다
  */
 @Getter
 @Entity
@@ -28,13 +32,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Store store;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
     private List<OrderItem> items = new ArrayList<>();
 
     @Column(nullable = false)

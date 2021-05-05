@@ -6,6 +6,9 @@ import javax.persistence.*;
 
 /**
  * Created by kimchanjung on 2021-04-10 오후 1:47
+ * [엔티티 관계에서 기본패치전략]
+ * 기본패치전략을 그대로 사용하는 경우 생략해도 되지만
+ * 사람은 항상 햇갈릴 수 있기 때문에 명시적으로 설정해주는 편이다
  */
 @Getter
 @Entity
@@ -16,7 +19,7 @@ public class OrderItem {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     private Order order;
 
     @Column(nullable = false)

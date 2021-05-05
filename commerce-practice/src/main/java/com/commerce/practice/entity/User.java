@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by kimchanjung on 2021-04-10 오후 2:00
+ * 기본적으로 특별한 경우가 아니면 기본 fetch 전략을 사용하는 편인데
+ * [엔티티 관계에서 기본패치전략]
+ * 기본패치전략을 그대로 사용하는 경우 생략해도 되지만
+ * 사람은 항상 햇갈릴 수 있기 때문에 명시적으로 설정해주는 편이다
  */
 
 @Getter
@@ -32,9 +36,9 @@ public class User {
     private String password;
     @Column(nullable = false)
     private Integer loginCount;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private final List<BookmarkedStore> bookmarkedStores = new ArrayList<>();
-    @OneToMany(mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private final List<Order> orders = new ArrayList<>();
     @UpdateTimestamp
     private LocalDateTime lastLoginAt;
