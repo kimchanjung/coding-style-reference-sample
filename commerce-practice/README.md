@@ -61,14 +61,14 @@ MapStruct v1.4.2
 
 #### 레이어별 분류
 - configuration - 설정 클래스 
-- controllers - 컨트롤러 
-- dto - Data Transfer Object
-- entity - JPA 엔티티 클래스
+- [controllers](/commerce-practice/src/main/java/com/commerce/practice/controllers) - 컨트롤러 
+- [dto](/commerce-practice/src/main/java/com/commerce/practice/dto) - Data Transfer Object
+- [entity](/commerce-practice/src/main/java/com/commerce/practice/entity) - JPA 엔티티 클래스
 - enums - 열거형 객체, 주로 상태 값
-- mappers - MapStruct 매퍼 클래스, dto <-> entity 간 매퍼
+- [mappers](/commerce-practice/src/main/java/com/commerce/practice/mappers) - MapStruct 매퍼 클래스, dto <-> entity 간 매퍼
 - mocks - 테스트 시 필요한 entity, dto 객체 생성 상용구 모음 
 - repositories - JPA repository
-- services - 메인 비즈니스 로직 
+- [services](/commerce-practice/src/main/java/com/commerce/practice/services/impl) - 메인 비즈니스 로직 
 - util - 각종 유틸리티 클래스 
 - ex - 예외 클래스 
 
