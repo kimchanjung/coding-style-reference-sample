@@ -82,7 +82,7 @@ public class Order {
     }
 
     public Optional<Order> cancel(String cancelMsg) {
-        if (this.state.stateChangeable(OrderState.CANCEL))
+        if (this.state.changeable(OrderState.CANCEL))
             return empty();
         this.cancelMsg = cancelMsg;
         this.canceledAt = LocalDateTime.now();
@@ -92,7 +92,7 @@ public class Order {
     }
 
     public Optional<Order> complete() {
-        if (this.state.stateChangeable(OrderState.COMPLETE))
+        if (this.state.changeable(OrderState.COMPLETE))
             return empty();
         this.completedAt = LocalDateTime.now();
         this.state = OrderState.COMPLETE;

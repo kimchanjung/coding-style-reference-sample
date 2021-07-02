@@ -9,6 +9,7 @@ import com.commerce.practice.repositories.StoreRepository;
 import com.commerce.practice.services.StoreService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoField;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.Optional;
  * Created by kimchanjung on 2021-04-10 오후 3:36
  */
 
+@Transactional
 @Service
 public class StoreServiceImpl implements StoreService {
     private final StoreRepository storeRepository;

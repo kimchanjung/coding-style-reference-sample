@@ -31,7 +31,6 @@ public class BookmarkedStoreServiceImpl implements BookmarkedStoreService {
     private final UserService userService;
     private final BookmarkedStoreMapper mapper;
 
-
     public BookmarkedStoreServiceImpl(BookmarkedStoreRepository bookmarkedStoreRepository,
                                       StoreRepository storeRepository, UserService userService,
                                       BookmarkedStoreMapper mapper) {
